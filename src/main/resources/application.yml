@@ -1,0 +1,22 @@
+# 开启健康检查详细监控页面
+# http://localhost:7001/actuator/health
+management:
+  endpoint:
+     health:
+        #show-details: always
+       show-details: ${SOME_ENV}
+
+# 激活所有的actuator端点
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# 描述应用
+# http://localhost:7001/actuator/info
+info:
+  app-name: spring-boot-demo
+  author: ccarlos
+  email: ccarlos@qq.com
+server:
+  port: 7707
