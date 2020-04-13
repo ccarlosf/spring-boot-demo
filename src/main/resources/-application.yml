@@ -1,0 +1,45 @@
+# 所有环境公用的配置属性
+# 开启健康检查详细监控页面
+# http://localhost:7001/actuator/health
+server:
+  port: 7707
+management:
+  endpoint:
+    health:
+      #show-details: always
+      show-details: ${SOME_ENV}
+  # 激活所有的actuator端点
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+# 描述应用
+# http://localhost:7001/actuator/info
+info:
+  app-name: spring-boot-demo
+  author: ccarlos
+  email: ccarlos@qq.com
+
+# 连字符
+# 指定环境
+spring:
+  profiles:
+    active: dev
+
+---
+# profile=x的专用属性，也就是某个环境下的专用属性
+# 开发环境
+spring:
+  profiles: dev
+
+---
+
+# profile=x的专用属性，也就是某个环境下的专用属性
+# 生产环境
+spring:
+  profiles: prod
+server:
+  tomcat:
+    max-threads: 300
+    max-connections: 1000
+
